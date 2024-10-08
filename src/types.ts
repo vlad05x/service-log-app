@@ -1,4 +1,5 @@
 export interface ServiceLogDraft {
+  id: number,
   providerId: string;
   serviceOrder: string;
   truckId: string;

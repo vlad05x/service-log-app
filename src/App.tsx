@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLogForm from './components/ServiceLogForm/ServiceLogForm';
 import { Provider } from 'react-redux';
 import store from './store';
-// import ServiceLogList from './components/ServiceLogList/ServiceLogList';
+import ServiceLogList from './components/ServiceLogList/ServiceLogList';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <div className='__container'>
         <h1>Service Log Form</h1>
         <ServiceLogForm />
-        {/* <ServiceLogList /> */}
+        <ServiceLogList />
       </div>
     </Provider>
   );

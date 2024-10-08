@@ -20,6 +20,7 @@ const ServiceLogForm = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const [formData, setFormData] = useState<ServiceLogDraft>({
+    id: Date.now(),
     providerId: "",
     serviceOrder: "",
     truckId: "",
@@ -34,8 +35,17 @@ const ServiceLogForm = () => {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+    const storedDrafts = localStorage.getItem("serviceLogDrafts");
+    if (storedDrafts) {
+      const parsedDrafts = JSON.parse(storedDrafts);
+      dispatch(saveDraft(parsedDrafts));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setSaving(true);
+      localStorage.setItem("serviceLogDrafts", JSON.stringify(formData)); // Сохранение черновиков
       dispatch(saveDraft(formData));
       setSaving(false);
     }, 1000);
